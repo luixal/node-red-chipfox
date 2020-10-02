@@ -1,0 +1,63 @@
+<script type="text/javascript">
+    RED.nodes.registerType(
+      'get-positions',
+      {
+        category: 'function',
+        color: '#0096DC',
+        defaults: {
+          username: {value: ""},
+          password: {value: ""},
+          uuid: {value: ""},
+          device: {value: ""},
+          limit: {value: null},
+          after: {value: null},
+          before: {value: null}
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: "font-awesome/fa-map-marker",
+        label: function() { return this.name || 'get positions' }
+      }
+    );
+</script>
+
+<script type="text/html" data-template-name="get-positions">
+    <div class="form-row">
+      <label for="node-input-username"><i class="fa fa-user"></i> Username</label>
+      <input type="text" id="node-input-username" placeholder="username"></input>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-password"><i class="fa fa-unlock"></i> Password</label>
+      <input type="text" id="node-input-password" placeholder="password"></input>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-uuid"><i class="fa fa-key"></i> UUID</label>
+      <input type="text" id="node-input-uuid" placeholder="uuid"></input>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-device"><i class="fa fa-map-pin"></i> Device ID</label>
+      <input type="text" id="node-input-device" placeholder="device id"></input>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-limit"><i class="fa fa-plus"></i> Limit</label>
+      <input type="number" id="node-input-limit" placeholder="máx number of positions"></input>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-after"><i class="fa fa-calendar"></i> From</label>
+      <input type="date" id="node-input-after"></input>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-before"><i class="fa fa-calendar"></i> To</label>
+      <input type="date" id="node-input-before"></input>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="get-positions">
+  <p>This node retrieves positions for a device from ChipFox's API</p>
+</script>
