@@ -1,5 +1,3 @@
-const ChipFoxClient = require('ts-chipfox-client').ChipFoxClient;
-
 module.exports = function(RED) {
 
   function getPositionsNode(config) {
@@ -9,35 +7,33 @@ module.exports = function(RED) {
     node.on(
       'input',
       async function(msg) {
-        console.log(config);
-        this.context().flow.set('chipfoxClient', new ChipFoxClient(config.username, config.password, config.uuid));
+
         const api = this.context().flow.get('chipfoxClient');
         const deviceId = config.device || msg.payload.device;
+        if (!api) return [null, 'No API found, you should run login node first'];
+        if (!deviceId) return [null, 'You must provide a device id'];
+        
         let limit = config.limit || msg.payload.limit;
         let after = config.after || msg.payload.after;
         if (after) after = new Date(after);
         let before = config.before || msg.payload.before;
         if (before) before = new Date(before);
-        console.log(after);
-        console.log(before);
 
         try {
-          let response = await api.login();
-          console.log(response)
-          let devices = await api.getDevices();
-          console.log(devices);
-          // build query object:
+
           let query = {};
           if (limit) query.limit = limit;
-          if (after) query.after = after.getTime() / 1000;
-          if (before) query.before = before.getTime() / 1000;
+          if (after) query.after = after;
+          if (before) query.before = before;
           let positions = await api.getDevicePositions(deviceId, query);
-          console.log(positions);
-          msg.payload = {response, devices, positions};
+          msg.payload = positions;
           node.send([msg, null]);
+
         } catch(error) {
+
           msg.payload = error;
-          node.send([null, error]);
+          node.send([null, msg]);
+
         }
       }
     );

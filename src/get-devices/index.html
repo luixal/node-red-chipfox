@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType(
+      'get-devices',
+      {
+        category: 'function',
+        color: '#0096DC',
+        defaults: {
+          device: {value: ""},
+          limit: {value: null},
+          after: {value: null},
+          before: {value: null}
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: "font-awesome/fa-satellite",
+        label: function() { return this.name || 'get devices' }
+      }
+    );
+</script>
+
+<script type="text/html" data-template-name="get-devices">
+</script>
+
+<script type="text/html" data-help-name="get-devices">
+  <p>This node retrieves devices from ChipFox's API</p>
+</script>
