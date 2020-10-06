@@ -11,13 +11,13 @@
     "name": "Luis Alberto Pérez García",
     "email": "luixal@gmail.com"
   },
-  "homepage": "https://github.com/luixal/node-red-chipfox",
+  "homepage": "https://github.com/luixal/node-red-contrib-chipfox",
   "repository": {
     "type": "git",
-    "url": "https://github.com/luixal/node-red-chipfox"
+    "url": "https://github.com/luixal/node-red-contrib-chipfox"
   },
   "bugs": {
-    "url": "https://github.com/luixal/node-red-chipfox/issues",
+    "url": "https://github.com/luixal/node-red-contrib-chipfox/issues",
     "email": "luixal@gmail.com"
   },
   "main": "index.js",
