@@ -1,5 +1,5 @@
 {
-  "name": "node-red-chipfox",
+  "name": "node-red-contrib-chipfox",
   "version": "0.1.0",
   "description": "NodeRed node to get data from ChipFox API",
   "keywords": [
